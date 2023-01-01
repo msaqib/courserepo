@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+</head>
+
+<body>
+ <div class="container">
+  <hr>
+  <h1>Create New Contact</h1>
+  <hr>
+
+  <form action="http://localhost:3500/course" method="POST">
+   <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" name="name">
+   </div>
+
+   <div class="form-group">
+    <label for="url">URL</label>
+    <input class="form-control" name="url">
+   </div>
+
+   <div class="form-group">
+    <label for="subject">Subject</label>
+    <input class="form-control" name="subject">
+   </div>
+
+   <div class="form-group">
+    <label for="level">Subject</label>
+    <select name="level" id="level">
+     <option value="Beginner">Beginner</option>
+     <option value="Intermediate">Intermediate</option>
+     <option value="Advanced">Advanced</option>
+    </select>
+   </div>
+   <!--Other fields-->
+   <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+ </div>
+</body>
+
+</html>
