@@ -1,0 +1,77 @@
+.contact-card {
+ display: flex;
+ padding: 10px;
+ color: #ffffff;
+ background-color: rgb(42, 84, 104);
+ font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+ box-shadow: 10px 10px 25px -16px rgba(0, 0, 0, 0.75);
+ border-radius: 10px;
+ max-width: 500px;
+ max-height: 125px;
+ margin-bottom: 10px;
+}
+
+.contact-card p {
+ margin-left: 10px;
+ margin-top: 0;
+}
+
+button {
+ margin-left: 10px;
+ margin-bottom: 10px;
+}
+
+.course-list {
+ width: 90vw;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+.course-card {
+ background-color: azure;
+ margin-left: 0.5em;
+ border-radius: 0.15em;
+ width: 90%;
+ margin-bottom: 1.5rem;
+ display: flex;
+ flex-direction: row;
+}
+
+.course-details {
+
+ margin-left: 0.5rem;
+ display: inline-block;
+ width: calc(100% - 150px);
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+}
+
+@media screen and (min-width: 712px) {
+ .course-list {
+  display: flex;
+  flex-direction: row;
+ }
+
+ .course-card {
+  background-color: azure;
+  margin-left: 0.5em;
+  border-radius: 0.15em;
+  width: 40%;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: row;
+ }
+
+ .course-details {
+
+  margin-left: 0.5rem;
+  display: inline-block;
+  width: calc(100% - 150px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ }
+}
