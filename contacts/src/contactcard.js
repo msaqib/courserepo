@@ -4,6 +4,10 @@ import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/
 import "./styles.css";
 
 const Card = props => {
+ const delHandler = () => {
+  props.delHandler(props.id)
+ }
+
  return (
   <div className="course-card">
    <img src={props.avatar} alt="profile">
@@ -13,7 +17,7 @@ const Card = props => {
     <div id="name"><FontAwesomeIcon icon={solid('home')} /> <a href={props.url} target="_blank">{props.name}</a></div>
     <div id="subject"><FontAwesomeIcon icon={solid('tag')} /> {props.subject}</div>
     <div id="level"><FontAwesomeIcon icon={solid('fire')} /> {props.level}</div>
-    <div id="trash"><FontAwesomeIcon icon={solid('trash-can')} /></div>
+    <div id="trash" onClick={delHandler}><FontAwesomeIcon icon={solid('trash-can')} /></div>
    </div>
 
   </div>

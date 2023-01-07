@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import Modal from './modal'
 
 export default function Newcourse() {
  const [name, setName] = useState("");
@@ -9,10 +10,17 @@ export default function Newcourse() {
 
  const [subs, setSubs] = useState([]);
 
+ const [showModal, setShowModal] = useState(false);
+
  useEffect(() => {
   fetch('http://localhost:3500/subjects').then(response => {
    return response.json()
-  }).then(data => setSubs(data))
+  }).then(data => {
+   setSubs(data)
+   if (data.length > 0) {
+    setSubject(data[0].name)
+   }
+  })
 
  }, [])
 
@@ -32,35 +40,19 @@ export default function Newcourse() {
   });
  }
 
- let subjects = [];
- fetch('http://localhost:3500/subjects')
-  .then(response => {
-   return response.json();
-  }).then(data => {
-   subjects = data.map((sub) => {
-    //console.log(sub)
-    return sub.name
-   });
-   //console.log(subjects);
-  });
+ // let subjects = [];
+ // fetch('http://localhost:3500/subjects')
+ //  .then(response => {
+ //   return response.json();
+ //  }).then(data => {
+ //   subjects = data.map((sub) => {
+ //    console.log(sub)
+ //    return sub.name
+ //   });
+ //   //console.log(subjects);
+ //  });
 
- // const fetchSubjects = () => {
- //  console.log('Fetching subjects')
- //  fetch('http://localhost:3500/subjects', {
- //   method: 'GET',
- //   headers: {
- //    Accept: 'application/json',
- //    'Content-Type': 'application/json'
- //   }
- //  }).then((response) => {
- //   response.json().then((subjects) => {
- //    return subjects
- //   })
- //  })
- // }
-
- //const subjects = fetchSubjects();
- console.log(subjects)
+ // console.log(subjects)
  return (
   <>
    <h1>Create a new course</h1>
@@ -89,7 +81,13 @@ export default function Newcourse() {
      <select value={subject} onChange={(evt) => setSubject(evt.target.value)}>
       {subs.map((subject) => <option value={subject.name}>{subject.name}</option>)}
      </select>
-
+     <label>
+      <button onClick={(e) => { e.preventDefault(); setShowModal(true) }}>Select pre-requisites</button>
+      <Modal show={showModal} onClose={(e) => { e.preventDefault(); setShowModal(false) }} title="Pre-requisites" />
+     </label>
+     <label>
+      <button>Select follow-ons</button>
+     </label>
     </label>
     <input type="submit" />
    </form>

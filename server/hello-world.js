@@ -116,6 +116,23 @@ router.post('/checksubject', (req, res) => {
  })
 });
 
+router.post('/deletesubject', (req, res) => {
+ const courseid = req.body;
+ console.log('Deleting course ID ', courseid.id);
+ db.serialize(function () {
+  console.log('Deleting course: ', courseid.id);
+  db.all("delete from courses where courses.id = '" + courseid.id + "'", function (err, row) {
+   console.log(row);
+   if (row.length === 0) {
+    res.send(JSON.stringify({ status: 'Deleted' }));
+   } else {
+    console.log("Couldn't delete course")
+    res.send(JSON.stringify({ status: 'Couldnt' }));
+   }
+  })
+ })
+});
+
 router.get('/courses', (req, res) => {
  let contacts = []
  db.serialize(function () {
