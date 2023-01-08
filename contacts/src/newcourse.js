@@ -1,16 +1,32 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Modal from './modal'
+import { getCourseList } from './netfun';
 
 export default function Newcourse() {
  const [name, setName] = useState("");
  const [url, setURL] = useState("");
  const [level, setLevel] = useState("Beginner");
  const [subject, setSubject] = useState("");
+ const [courses, setCourses] = useState(null);
+ const [checkboxState, setCheckboxState] = useState(null);
 
  const [subs, setSubs] = useState([]);
 
  const [showModal, setShowModal] = useState(false);
+
+ useEffect(() => {
+  let mounted = true;
+  getCourseList().then(items => {
+   if (mounted) {
+    setCourses(items)
+    const checkboxes = new Array(items.length).fill(false)
+    setCheckboxState(checkboxes)
+    console.log(items)
+   }
+  })
+  return () => mounted = false;
+ }, [])
 
  useEffect(() => {
   fetch('http://localhost:3500/subjects').then(response => {
@@ -23,6 +39,11 @@ export default function Newcourse() {
   })
 
  }, [])
+
+ const onCheckbox = (loc) => {
+  const newCheckboxState = checkboxState.map((item, index) => (index == loc) ? !item : item)
+  setCheckboxState(newCheckboxState)
+ }
 
  const handleSubmit = (event) => {
   event.preventDefault();
@@ -70,9 +91,9 @@ export default function Newcourse() {
     <label>
      Level:
      <select value={level} onChange={(evt) => setLevel(evt.target.value)}>
-      <option value="Beginner">Beginner</option>
-      <option value="Intermediate">Intermediate</option>
-      <option value="Advanced">Advanced</option>
+      <option value="Beginner" key="beginner">Beginner</option>
+      <option value="Intermediate" key="intermediate">Intermediate</option>
+      <option value="Advanced" key="advanced">Advanced</option>
      </select>
     </label>
 
@@ -83,7 +104,7 @@ export default function Newcourse() {
      </select>
      <label>
       <button onClick={(e) => { e.preventDefault(); setShowModal(true) }}>Select pre-requisites</button>
-      <Modal show={showModal} onClose={(e) => { e.preventDefault(); setShowModal(false) }} title="Pre-requisites" />
+      <Modal courselist={courses} show={showModal} checkboxState={checkboxState} onCheckbox={onCheckbox} onClose={(e) => { e.preventDefault(); setShowModal(false); }} title="Pre-requisites" />
      </label>
      <label>
       <button>Select follow-ons</button>
