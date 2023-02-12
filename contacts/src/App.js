@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //import Card from "./contactcard";
-import Newcourse from "./newcourse";
+import Newcourse2 from "./newcourse-1";
 import Newsubject from "./newsubjects";
 import Navbar from "./NavElements";
 import All from './all'
@@ -14,7 +14,7 @@ const App = () => {
       <div className="courses">
         <Routes>
           <Route path='/' element={<All />} />
-          <Route path='/newcourse' element={<Newcourse />} />
+          <Route path='/newcourse' element={<Newcourse2 />} />
           <Route path='/newsubject' element={<Newsubject />} />
         </Routes>
       </div>

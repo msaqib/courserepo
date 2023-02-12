@@ -31,7 +31,6 @@ export default function All() {
         console.log(err);
       });
   }
-
   return (
     <>
       <h2>Course list</h2>
@@ -46,6 +45,8 @@ export default function All() {
               url={course.url}
               level={course.level}
               subject={course.subject}
+              /*pre={course.pre}
+              post={course.post}*/
               delHandler={del}
             />
           }
