@@ -53,6 +53,7 @@ button {
  .course-list {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
  }
 
  .course-card {
@@ -123,3 +124,255 @@ button {
  display: flex;
  flex-direction: row;
 }
+
+/* Wizard styling */
+
+.course-data {
+ display: flex;
+ flex-direction: column;
+ width: 200px;
+}
+
+.course-data input,
+.course-data select {
+ display: block;
+ width: 100%;
+ border-radius: 5px;
+}
+
+.step-wizard {
+ display: flex;
+ flex-direction: column;
+ height: 100vh;
+ width: 100%;
+ justify-content: center;
+ align-items: center;
+ background-color: #8BC6EC;
+ background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+}
+
+.step-wizard-list {
+ background: #fff;
+ box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+ color: #333;
+ list-style-type: none;
+ border-radius: 10px;
+ display: flex;
+ padding: 20px 10px;
+ position: relative;
+ z-index: 10;
+}
+
+.step-wizard-item {
+ padding: 0 20px;
+ flex-basis: 0;
+ -webkit-box-flex: 1;
+ -ms-flex-positive: 1;
+ flex-grow: 1;
+ max-width: 100%;
+ display: flex;
+ flex-direction: column;
+ text-align: center;
+ min-width: 70px;
+ position: relative;
+}
+
+.step-wizard-item+.step-wizard-item:after {
+ content: "";
+ position: absolute;
+ left: 0;
+ top: 19px;
+ background: #21d4fd;
+ width: 100%;
+ height: 2px;
+ transform: translateX(-50%);
+ z-index: -10;
+}
+
+.progress-count {
+ height: 40px;
+ width: 40px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ border-radius: 50%;
+ font-weight: 600;
+ margin: 0 auto;
+ position: relative;
+ z-index: 10;
+ color: transparent;
+}
+
+.progress-count:after {
+ content: "";
+ height: 40px;
+ width: 40px;
+ background: #21d4fd;
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -50%);
+ border-radius: 50%;
+ z-index: -10;
+}
+
+.progress-count:before {
+ content: "";
+ height: 10px;
+ width: 20px;
+ border-left: 2px solid #fff;
+ border-bottom: 2px solid #fff;
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -60%) rotate(-45deg);
+ transform-origin: center center;
+}
+
+.progress-label {
+ font-size: 14px;
+ font-weight: 600;
+ margin-top: 10px;
+}
+
+.current-item .progress-count:before,
+.current-item~.step-wizard-item .progress-count:before {
+ display: none;
+}
+
+.current-item~.step-wizard-item .progress-count:after {
+ width: 10px;
+ height: 10px;
+}
+
+.current-item~.step-wizard-item .progress-label {
+ opacity: 0.5;
+}
+
+.current-item .progress-count:after {
+ background: #fff;
+ border: 2px solid #21d4fd;
+}
+
+.current-item .progress-count {
+ color: #21d4fd;
+}
+
+/* .box {
+ width: 800px;
+ border: 1px solid #ddd;
+}
+
+.box .steps {
+ border-bottom: 1px solid #ddd;
+ display: flex;
+ justify-content: center;
+}
+
+.box .steps ul {
+ overflow: hidden;
+}
+
+.box .steps ul li {
+ margin-right: 10px;
+}
+
+.box .steps ul li.active {
+ background-color: #ddd;
+}*/
+
+.buttons {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.pre>ul {
+ border: 1px solid white;
+ list-style: none;
+}
+
+.coursepre {
+ border: 1px solid white;
+}
+
+.post>ul {
+ border: 1px solid white;
+ list-style: none;
+}
+
+/* .box .steps ul li div {
+ color: #999;
+ padding: 10px 0 15px 45px;
+ position: relative;
+ background: #f5f5f5;
+ width: 165px;
+}
+
+.box .steps ul li div span {
+ font-size: 13px;
+}
+
+.box .steps ul li:first-child div {
+ width: 135px;
+ padding-left: 15px;
+}
+
+.box .steps ul li div::before {
+ content: " ";
+ border-top: 50px solid transparent;
+ border-bottom: 50px solid transparent;
+ border-left: 30px solid #ddd;
+ position: absolute;
+ top: 50%;
+ margin-top: -50px;
+ left: 100%;
+ z-index: 1;
+ margin-left: 1px;
+}
+
+.box .steps ul li div::after {
+ content: " ";
+ border-top: 50px solid transparent;
+ border-bottom: 50px solid transparent;
+ border-left: 30px solid #f5f5f5;
+ position: absolute;
+ top: 50%;
+ margin-top: -50px;
+ left: 100%;
+ z-index: 2;
+}
+
+.box .steps ul li.done div {
+ border-color: #20a8d8 !important;
+ color: #fff !important;
+ background: #20a8d8 !important;
+}
+
+.box .steps ul li.done div::after {
+ border-left: 30px solid #20a8d8;
+}
+
+.box .steps ul li.active div {
+ border-color: #167495 !important;
+ color: #fff !important;
+ background: #167495 !important;
+}
+
+.box .steps ul li.active div::after {
+ border-left: 30px solid #167495;
+}
+
+.box .step-component {
+ padding: 20px;
+ height: 200px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.box .btn-component {
+ padding: 20px;
+ display: flex;
+ justify-content: space-between;
+} */

@@ -19,7 +19,7 @@ router.post('/course', (req, res) => {
  //contacts.push(contact)
  db.serialize(function () {
   db.run(
-   `INSERT into courses values(NULL, ?, ?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)`, course.name, course.url, course.level, course.subject,
+   `INSERT into courses values(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, course.name, course.url, course.level, course.subject, course.pre.length > 0 ? course.pre[0] : 'NULL', course.pre.length > 1 ? course.pre[1] : 'NULL', course.pre.length > 2 ? course.pre[2] : 'NULL', course.pre.length > 3 ? course.pre[3] : 'NULL', course.post.length > 0 ? course.post[0] : 'NULL', course.post.length > 1 ? course.post[1] : 'NULL', course.post.length > 2 ? course.post[2] : 'NULL', course.post.length > 3 ? course.post[3] : 'NULL',
    function (error) {
     if (error) {
      return console.error(error)
@@ -28,7 +28,7 @@ router.post('/course', (req, res) => {
    }
   )
  })
- res.send('Course is added to the database')
+ res.send(JSON.stringify({ 'status': 'Course is added to the database' }))
 })
 
 router.post('/newsubject', (req, res) => {
@@ -140,6 +140,7 @@ router.get('/courses', (req, res) => {
    if (error) {
     console.log(error)
    }
+   console.log(row)
    res.send(row)
   })
  })
