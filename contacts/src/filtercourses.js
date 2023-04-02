@@ -75,15 +75,10 @@ export function FilterCourses(props) {
     selectedCategories.length === 0
       ? courses
       : courses.filter(item => selectedCategories.includes(item.subject));
-  /*if (selectedCategories.length > 0)*/ {
-    filteredItems = courses.filter(item =>
-      selectedCategories.includes(item.subject)
-    )
-  }
 
-  function clickHandler(id) {
-    history(`/?id=${id}`)
-  }
+  filteredItems = courses.filter(item =>
+    selectedCategories.includes(item.subject)
+  )
 
   return (
     <>

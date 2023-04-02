@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import Reac from 'react';
 
 import { FilterCourses } from './filtercourses';
 export default function All(props) {

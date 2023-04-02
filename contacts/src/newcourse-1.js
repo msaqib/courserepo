@@ -42,18 +42,8 @@ export default function NewCourse2(props) {
   setLevel(value)
  }
 
- const [steps, setSteps] = useState([
-  { key: 0, label: 'Basic information' },
-  { key: 1, label: 'Prior courses' },
-  { key: 2, label: 'Follow-up courses' },
-  { key: 3, label: 'Confirm' }
- ])
-
  const [currentStep, setCurrentStep] = useState(0);
 
- const filter = () => {
-
- }
  const handleNext = () => {
   if (currentStep === 0) {
    // Nothing to do since all state is saved 
@@ -117,10 +107,6 @@ export default function NewCourse2(props) {
   }
   setCurrentStep(currentStep - 1)
 
- }
-
- const handleSubmit = () => {
-  alert('all done 2')
  }
 
  const onCheckbox = (loc) => {

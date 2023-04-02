@@ -1,5 +1,3 @@
-import { FaBars } from 'react-icons/fa'
-import styled from 'styled-components'
 import './navbar.css'
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";

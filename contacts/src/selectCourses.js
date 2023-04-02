@@ -8,7 +8,6 @@ export function SelectCourses(props) {
   chkboxes.forEach(chbox => {
    chbox.checked = true
   })
-  const filteredCourseList = courses.filter((course) => { return subjectsFilter.includes(course.subject) })
  }, [])
 
  const courses = props.courselist;

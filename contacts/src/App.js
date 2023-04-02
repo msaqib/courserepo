@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.css";
-import { Route, Routes, useParams } from 'react-router-dom';
-//import Card from "./contactcard";
+import { Route, Routes } from 'react-router-dom';
 import Newcourse2 from "./newcourse-1";
 import Newsubject from "./newsubjects";
 import Navbar from "./NavElements";

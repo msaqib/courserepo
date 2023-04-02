@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 
 export function CourseDetails(props) {
  const { id } = useParams()
  const courses = props.coursedata
- const course = courses.filter(course => course.ID == id)[0]
+ const course = courses.filter(course => course.ID === id)[0]
  const p1 = courses.filter(item => item.ID === course.prereq1)[0]
  const p2 = courses.filter(item => item.ID === course.prereq2)[0]
  const p3 = courses.filter(item => item.ID === course.prereq3)[0]
