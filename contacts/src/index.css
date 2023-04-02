@@ -11,3 +11,60 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#coursedetailsview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+  white-space: nowrap;
+}
+
+.pre,
+.follow {
+  width: 30vw;
+  border-radius: 15%;
+  padding: 1em;
+  text-align: center;
+  background-color: #4285F4;
+  color: white;
+}
+
+.follow {
+  background-color: #FBBC05;
+  color: black;
+}
+
+.sep {
+  width: 0.5em;
+  height: 2em;
+  background-color: black;
+  align-self: center;
+}
+
+.pre>a {
+  color: white;
+}
+
+.follow>a {
+  color: black;
+}
+
+#course {
+  background-color: #34A853;
+  border-radius: 10%;
+  text-align: center;
+  color: white;
+  width: 40vw;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#course>a {
+  color: white;
+}
+
+.pre:first-of-type {
+  margin-top: 10px;
+}

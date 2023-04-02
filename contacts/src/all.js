@@ -1,56 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import Card from './contactcard';
-export default function All() {
-  const [c, setCourses] = useState([]);
-  const loadCourses = new XMLHttpRequest();
-  loadCourses.open('GET', 'http://localhost:3500/courses', false)
-  loadCourses.send();
 
-  const courses = JSON.parse(loadCourses.responseText)
+import { FilterCourses } from './filtercourses';
+export default function All(props) {
 
-  const del = function (id) {
-    // deletes a course
-    console.log(id)
-    const url = `http://localhost:3500/deletesubject`;
-    fetch(url, {
-      "method": "POST",
-      body: JSON.stringify({ id: id }),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-        const newCourses = courses.filter(course => course.id !== id)
-        setCourses(newCourses)
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+
   return (
     <>
       <h2>Course list</h2>
       <div className="course-list">
-
-        {courses.map(
-          course => {
-            return <Card avatar="https://via.placeholder.com/150"
-              key={course.ID}
-              id={course.ID}
-              name={course.name}
-              url={course.url}
-              level={course.level}
-              subject={course.subject}
-              /*pre={course.pre}
-              post={course.post}*/
-              delHandler={del}
-            />
-          }
-        )}
+        <FilterCourses courselist={props.courseList} subjects={props.subjectsList} delHandler={props.delHandler} />
       </div>
     </>
   );

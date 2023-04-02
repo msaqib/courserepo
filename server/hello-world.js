@@ -25,10 +25,12 @@ router.post('/course', (req, res) => {
      return console.error(error)
     }
     console.log('Course added to database')
+    res.setHeader('Content-Type', 'application/json');
+    res.json({ 'ID': this.lastID })
    }
   )
  })
- res.send(JSON.stringify({ 'status': 'Course is added to the database' }))
+
 })
 
 router.post('/newsubject', (req, res) => {

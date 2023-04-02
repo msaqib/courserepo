@@ -1,31 +1,26 @@
 
 import React, { useState, useEffect } from 'react';
-import { getCourseList, submitNewCourse } from './netfun';
 import { BasicInfo } from './coursebasic';
 import { SelectCourses } from './selectCourses';
 import { ConfirmNewCourse } from './confirmnewcourse';
-export default function NewCourse2() {
+export default function NewCourse2(props) {
 
  const [name, setName] = useState("");
  const [url, setURL] = useState("");
  const [level, setLevel] = useState("Beginner");
  const [subject, setSubject] = useState("");
- const [courses, setCourselist] = useState([{ ID: 1, name: 'None', url: 'None', level: 'Beginner', subject: 'None' }]);
  const [checkboxState, setCheckboxState] = useState(null);
  const [precourses, setPrecourses] = useState([]);
  const [checkboxState2, setCheckboxState2] = useState(null);
  const [postcourses, setPostcourses] = useState([]);
  const [coursefornetwork, setCoursefornetwork] = useState(null)
- const [subs, setSubs] = useState([]);
  const [pre, setPre] = useState([]);
- //const [coursepreview, setCoursePreview] = useState(null);
 
  const initState = () => {
   setName('')
   setURL('')
   setLevel('Beginner')
   setSubject('')
-  setCourselist([])
   setCheckboxState(null)
   setCheckboxState2(null)
   setCurrentStep(0)
@@ -40,7 +35,7 @@ export default function NewCourse2() {
  }
 
  const changeSubject = (value) => {
-  setSubject(subject)
+  setSubject(value)
  }
 
  const changeLevel = (value) => {
@@ -69,7 +64,7 @@ export default function NewCourse2() {
    checkboxState.map((element, index) => {
     if (element) {
      //setPre([...pre, courses[index].ID])
-     const course = { name: courses[index].name, ID: courses[index].ID, url: courses[index].url };
+     const course = { name: props.courseList[index].name, ID: props.courseList[index].ID, url: props.courseList[index].url };
      pre_input = [...pre_input, course]
      //setPrecourses([...precourses, course])
     }
@@ -78,14 +73,6 @@ export default function NewCourse2() {
     }))
     setPrecourses(pre_input)
    })
-   //const newCheckboxState2 = new Array(checkboxState.length).fill(false);
-   //setCheckboxState2(newCheckboxState2)
-
-   /*for (let i = 0; i < checkboxState.length; i = i + 1) {
-    if (checkboxState[i]) {
-     setPre([...pre, courses[i].ID])
-    }
-   }*/
 
   }
   else if (currentStep === steps.length - 2) {
@@ -93,7 +80,7 @@ export default function NewCourse2() {
    let post = []
    checkboxState2.map((element, index) => {
     if (element) {
-     const course = { name: courses[index].name, ID: courses[index].ID, url: courses[index].url };
+     const course = { name: props.courseList[index].name, ID: props.courseList[index].ID, url: props.courseList[index].url };
      post = [...post, course]
     }
 
@@ -117,7 +104,7 @@ export default function NewCourse2() {
    let pruned_course = coursefornetwork
    pruned_course.pre = pruned_course.pre.map((course) => { return course.ID })
    pruned_course.post = pruned_course.post.map((course) => { return course.ID })
-   submitNewCourse(pruned_course)
+   props.newCourseHandler(pruned_course)
    initState();
    return;
   }
@@ -146,32 +133,13 @@ export default function NewCourse2() {
  }
 
  useEffect(() => {
-  fetch('http://localhost:3500/subjects').then(response => {
-   return response.json()
-  }).then(data => {
-   setSubs(data)
-   setSubject(data[0].name)
-   console.log(data)
-   if (data.length > 0) {
-
-   }
-  })
-
+  setSubject(props.subjectsList[0].name)
+  const newCheckboxState = Array(props.courseList.length).fill(false)
+  setCheckboxState(newCheckboxState)
+  const newCheckboxState2 = Array(props.courseList.length).fill(false)
+  setCheckboxState2(newCheckboxState2)
  }, [])
 
- useEffect(() => {
-  let mounted = true;
-  if (mounted) {
-   const coursedata = getCourseList().then(courses1 => {
-    const newCheckboxState = Array(courses1.length).fill(false)
-    setCheckboxState(newCheckboxState)
-    const newCheckboxState2 = Array(courses1.length).fill(false)
-    setCheckboxState2(newCheckboxState2)
-    setCourselist(courses1)
-   })
-  }
-  return () => mounted = false;
- }, [])
 
  return (
   <div>
@@ -186,9 +154,9 @@ export default function NewCourse2() {
       )
      }
     </ul>
-    {currentStep === 0 && <BasicInfo handleSubmit={handleNext} nameChange={changeName} urlChange={changeURL} subjectChange={changeSubject} levelChange={changeLevel} subject={subject} subs={subs} />}
-    {currentStep === 1 && <SelectCourses courselist={courses} subjects={subs} checkboxState={checkboxState} onCheckbox={onCheckbox} onClose={(e) => { e.preventDefault(); }} title="Pre-requisites" />}
-    {currentStep === 2 && <SelectCourses courselist={courses} subjects={subs} checkboxState={checkboxState2} onCheckbox={onCheckbox2} onClose={(e) => { e.preventDefault(); }} title="Follow-ups" />}
+    {currentStep === 0 && <BasicInfo handleSubmit={handleNext} nameChange={changeName} urlChange={changeURL} subjectChange={changeSubject} levelChange={changeLevel} subject={subject} subs={props.subjectsList} />}
+    {currentStep === 1 && <SelectCourses courselist={props.courseList} subjects={props.subjectsList} checkboxState={checkboxState} onCheckbox={onCheckbox} onClose={(e) => { e.preventDefault(); }} title="Pre-requisites" />}
+    {currentStep === 2 && <SelectCourses courselist={props.courseList} subjects={props.subjectsList} checkboxState={checkboxState2} onCheckbox={onCheckbox2} onClose={(e) => { e.preventDefault(); }} title="Follow-ups" />}
     {currentStep === 3 && <ConfirmNewCourse course={coursefornetwork} pre={precourses} post={postcourses} onClose={(e) => { e.preventDefault(); }} title="Preview new course" />}
     <div className="buttons">
      <input type="button" value="Back" onClick={handlePrevious} disabled={0 === currentStep} />

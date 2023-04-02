@@ -52,7 +52,7 @@ button {
 @media screen and (min-width: 712px) {
  .course-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
  }
 
@@ -74,6 +74,14 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+ }
+
+ .filteredcourses {
+  width: 100vw;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
  }
 }
 
@@ -300,6 +308,8 @@ button {
  border: 1px solid white;
  list-style: none;
 }
+
+
 
 /* .box .steps ul li div {
  color: #999;

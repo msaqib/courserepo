@@ -51,12 +51,13 @@ export function SelectCourses(props) {
       checked={allState}
       value="All"
       id="allbutton"
+      key="All"
      />
      <span>All</span>
     </label>
     {subjects.map((subject) => {
      return <label htmlFor={subject.name}>
-      <input type="checkbox" name="filter" onChange={filterHandler} value={subject.name} id={subject.name}></input>
+      <input type="checkbox" name="filter" onChange={filterHandler} value={subject.name} id={subject.name} key={subject.name}></input>
       <span>{subject.name}</span>
      </label>
     })}
@@ -70,6 +71,7 @@ export function SelectCourses(props) {
      return <div className="list-select" key={index}>
       <input type="checkbox"
        id={`checkbox-${index}`}
+       key={index}
        name={course.name}
        value={course.name}
        checked={props.checkboxState[index]}
