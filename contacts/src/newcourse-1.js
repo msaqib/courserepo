@@ -42,6 +42,13 @@ export default function NewCourse2(props) {
   setLevel(value)
  }
 
+ const [steps, setSteps] = useState([
+  { key: 0, label: 'Basic information' },
+  { key: 1, label: 'Prior courses' },
+  { key: 2, label: 'Follow-up courses' },
+  { key: 3, label: 'Confirm' }
+ ])
+
  const [currentStep, setCurrentStep] = useState(0);
 
  const handleNext = () => {
@@ -145,8 +152,8 @@ export default function NewCourse2(props) {
     {currentStep === 2 && <SelectCourses courselist={props.courseList} subjects={props.subjectsList} checkboxState={checkboxState2} onCheckbox={onCheckbox2} onClose={(e) => { e.preventDefault(); }} title="Follow-ups" />}
     {currentStep === 3 && <ConfirmNewCourse course={coursefornetwork} pre={precourses} post={postcourses} onClose={(e) => { e.preventDefault(); }} title="Preview new course" />}
     <div className="buttons">
-     <input type="button" value="Back" onClick={handlePrevious} disabled={0 === currentStep} />
-     <input type="button" value={steps.length - 1 !== currentStep ? 'Next' : 'Submit'} onClick={handleNext} />
+     <input className="wizard-button" type="button" value="Back" onClick={handlePrevious} disabled={0 === currentStep} />
+     <input className="wizard-button" type="button" value={steps.length - 1 !== currentStep ? 'Next' : 'Submit'} onClick={handleNext} />
     </div>
    </section>
 

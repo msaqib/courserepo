@@ -295,94 +295,62 @@ button {
  align-items: center;
 }
 
-.pre>ul {
- border: 1px solid white;
+.textbox {
+ padding: 5px 5px;
+}
+
+.wizard-button {
+ padding: 5px 5px;
+ border-radius: 10%;
+ margin: 4px;
+}
+
+.activebutton:hover {
+ cursor: pointer;
+}
+
+
+.confirmpre {
+ padding: 10px;
+ background-color: lightblue;
+}
+
+.confirmpre>ul {
  list-style: none;
 }
 
-.coursepre {
- border: 1px solid white;
+.confirmpre a {
+ color: black;
 }
 
-.post>ul {
- border: 1px solid white;
+.confirmcourse {
+ background-color: steelblue;
+ color: white;
+ padding: 10px;
+}
+
+.confirmcourse a {
+ color: white;
+}
+
+.confirmpost {
+ padding: 10px;
+ background-color: darkkhaki;
+ color: black;
+}
+
+.confirmpost a {
+ color: black;
+}
+
+.confirmpost>ul {
  list-style: none;
 }
 
-
-
-/* .box .steps ul li div {
- color: #999;
- padding: 10px 0 15px 45px;
- position: relative;
- background: #f5f5f5;
- width: 165px;
+.separator {
+ background-color: black;
+ display: block;
+ content: '';
+ height: 15px;
+ width: 2px;
 }
-
-.box .steps ul li div span {
- font-size: 13px;
-}
-
-.box .steps ul li:first-child div {
- width: 135px;
- padding-left: 15px;
-}
-
-.box .steps ul li div::before {
- content: " ";
- border-top: 50px solid transparent;
- border-bottom: 50px solid transparent;
- border-left: 30px solid #ddd;
- position: absolute;
- top: 50%;
- margin-top: -50px;
- left: 100%;
- z-index: 1;
- margin-left: 1px;
-}
-
-.box .steps ul li div::after {
- content: " ";
- border-top: 50px solid transparent;
- border-bottom: 50px solid transparent;
- border-left: 30px solid #f5f5f5;
- position: absolute;
- top: 50%;
- margin-top: -50px;
- left: 100%;
- z-index: 2;
-}
-
-.box .steps ul li.done div {
- border-color: #20a8d8 !important;
- color: #fff !important;
- background: #20a8d8 !important;
-}
-
-.box .steps ul li.done div::after {
- border-left: 30px solid #20a8d8;
-}
-
-.box .steps ul li.active div {
- border-color: #167495 !important;
- color: #fff !important;
- background: #167495 !important;
-}
-
-.box .steps ul li.active div::after {
- border-left: 30px solid #167495;
-}
-
-.box .step-component {
- padding: 20px;
- height: 200px;
- display: flex;
- align-items: center;
- justify-content: center;
-}
-
-.box .btn-component {
- padding: 20px;
- display: flex;
- justify-content: space-between;
-} */
