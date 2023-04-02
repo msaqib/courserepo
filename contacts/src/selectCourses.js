@@ -43,7 +43,7 @@ export function SelectCourses(props) {
  return (
   <div className="course-selector">
    <div className="filters"><span>Filter by subject</span>
-    <label htmlFor="all">
+    <label htmlFor="all" key='1'>
      <input
       type="checkbox"
       onChange={filterHandler}
@@ -55,7 +55,7 @@ export function SelectCourses(props) {
      <span>All</span>
     </label>
     {subjects.map((subject) => {
-     return <label htmlFor={subject.name}>
+     return <label htmlFor={subject.name} key={subject.name}>
       <input type="checkbox" name="filter" onChange={filterHandler} value={subject.name} id={subject.name} key={subject.name}></input>
       <span>{subject.name}</span>
      </label>
@@ -65,24 +65,26 @@ export function SelectCourses(props) {
    <div className="selector-header">
     <h3 className="selector-title">{props.title}</h3>
    </div>
-   <div className="course-list">
-    {filteredCourses.map((course, index) => {
-     return <div className="list-select" key={index}>
-      <input type="checkbox"
-       id={`checkbox-${index}`}
-       key={index}
-       name={course.name}
-       value={course.name}
-       checked={props.checkboxState[index]}
-       onChange={() => { props.onCheckbox(index) }} />
+   <div className="list-container">
+    <div className="course-list">
+     {filteredCourses.map((course, index) => {
+      return <div className="list-select" key={index}>
+       <input type="checkbox"
+        id={`checkbox-${index}`}
+        key={index}
+        name={course.name}
+        value={course.name}
+        checked={props.checkboxState[index]}
+        onChange={() => { props.onCheckbox(index) }} />
 
-      <div className="course-select">
-       <div>Name: {course.name}</div>
-       <div>Level: {course.level}</div>
-       <div>Subject: {course.subject}</div>
+       <div className={props.checkboxState[index] ? "course-select selected" : "course-select"}>
+        <div>Name: {course.name}</div>
+        <div>Level: {course.level}</div>
+        <div>Subject: {course.subject}</div>
+       </div>
       </div>
-     </div>
-    })}
+     })}
+    </div>
    </div>
   </div>
 

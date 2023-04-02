@@ -21,12 +21,18 @@ button {
  margin-bottom: 10px;
 }
 
-.course-list {
- width: 90vw;
+.list-container {
  display: flex;
- flex-direction: column;
  justify-content: center;
- align-items: center;
+ width: 100%;
+}
+
+.course-select:hover {
+ background-color: #9599E2;
+}
+
+.selected {
+ background-color: burlywood;
 }
 
 .course-card {
@@ -120,7 +126,7 @@ button {
 .course-select {
  border: 1px solid rgba(0, 0, 0, 0.2);
  display: flex;
- justify-content: center;
+ justify-content: left;
  align-items: left;
  flex-direction: column;
  display: block;
