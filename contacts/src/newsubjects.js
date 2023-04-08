@@ -56,7 +56,7 @@ export default function Newsubject() {
           }
         }).then((response) =>
           response.json()).then((data) => {
-            console.log('Data' + data.ID)
+            console.log('Data' + data.status)
           })
       }
       else {
@@ -70,7 +70,10 @@ export default function Newsubject() {
 
   const removeField = (index) => {
     let data = [...inputFields]
+    console.log('Index', index)
+    console.log('Before', data)
     data.splice(index, 1)
+    console.log('After', data)
     setInputFields(data)
   }
 
@@ -84,6 +87,7 @@ export default function Newsubject() {
           placeholder='Subject name'
           className='textbox'
           //value='{input.name}'
+          key='Subject'
           onChange={event => handleSubjectChange(event)}
         />
         {inputFields.map((input, index) => {
@@ -94,7 +98,7 @@ export default function Newsubject() {
                   name='subtopic'
                   placeholder='Subtopic name'
                   className='textbox'
-                  //value='{input.subtopic}'
+                  value={input}
                   onChange={event => handleFormChange(index, event)}
                 />
                 <button className="wizard-button" onClick={() => { removeField(index) }}>Remove</button>
