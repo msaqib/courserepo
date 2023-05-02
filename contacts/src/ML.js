@@ -334,9 +334,6 @@ function ML() {
       .append("text")
       .text((d) => names[d.data.id])
       .on('mouseover', function (d, i) {
-        console.log(d3.select(this).attr('font-size'));
-        console.log(d3.select(this.previousSibling).attr('width'));
-        console.log(d3.select(this.previousSibling).attr('height'));
         d3.select(this).transition()
           .duration('200')
           .attr('transform', 'scale(3)');
@@ -345,9 +342,6 @@ function ML() {
           .attr('transform', 'scale(3)')
       })
       .on('mouseout', function (d, i) {
-        console.log(d3.select(this).attr('font-size'));
-        console.log(d3.select(this.previousSibling).attr('width'));
-        console.log(d3.select(this.previousSibling).attr('height'));
         d3.select(this).transition()
           .duration('200')
           .attr('transform', 'scale(1)');

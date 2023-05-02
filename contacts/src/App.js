@@ -5,6 +5,8 @@ import Newcourse2 from "./newcourse-1";
 import Newsubject from "./newsubjects";
 import Navbar from "./NavElements";
 import All from './all'
+import ML from './ML'
+import d3 from 'd3-dag'
 import { CourseDetails } from "./CourseDetail";
 import { getCourseList, getSubjectList, submitNewCourse, deleteCourse } from "./netfun";
 import { useEffect, useState } from 'react';
@@ -89,6 +91,7 @@ const App = () => {
             <Route path='/newcourse' element={<Newcourse2 courseList={courses} subjectsList={subjects} newCourseHandler={newCourseHandler} />} />
             <Route path='/newsubject' element={<Newsubject />} />
             <Route path='/course/:id' element={<CourseDetails coursedata={courses} />} />
+            <Route path='/ml' element={<ML />} />
           </Routes>
         </div>
       </>
